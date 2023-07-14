@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+<!-- Navbar Content -->
+{% block navbar-content %} 
+<i style="color:yellowgreen;" class="fas fa-user-alt"></i>&nbsp;&nbsp; Data List
+{% endblock navbar-content %}
+<!-- Page Content -->
+{% block content %} 
+<div class="container">
+    <div class="row">
+    <br><br><br>
+    <span class="mb-3 mt-4 col text-center">
+        <a class="btn btn-success btn-sm" style="width: 150px;" data-bs-toggle="modal"
+        data-bs-target="#addData">Add Data
+        <i class="fas fa-plus"></i>
+    </a>
+    </span>
+    <table class="table table-bordered" id ="example" style="text-align: center;">
+        <thead class="table-success">
+        <tr>
+            <th>Id</th>
+            <th>date_time</th>
+            <th>trade_code</th>
+            <th>high</th>
+            <th>low</th>
+            <th>open</th>
+            <th>close</th>
+            <th>volume</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+                <!-- Data from backend -->
+                {% for list in lists %}
+                <tr>
+                    <td>{{ list.id }}</td>
+                    <td>{{ list.date_time }}</td>
+                    <td>{{ list.trade_code }}</td>
+                    <td>{{ list.high }}</td>
+                    <td>{{ list.low }}</td>
+                    <td>{{ list.open }}</td>
+                    <td>{{ list.close }}</td>
+                    <td>{{ list.volume }}</td>
+                    <td>
+                        <a class="btn btn-success text-center" title="Edit employee" data-bs-toggle="modal"
+                            data-bs-target="">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success text-center" title="Delete employee">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+    </table>
+            <!-- Include Page -->
+ 
+           {% include 'add.html'%}
+</div>
+</div>
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    var m = "{{ message }}";
+    swal("perfect !", m, "success")
+</script>
+{% endif %}
+{% endfor %}
+<br><br><br>
+{% endblock content %}

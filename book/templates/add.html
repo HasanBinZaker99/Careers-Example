@@ -1,0 +1,72 @@
+  <!-- Modal -->
+  <div class="modal fade" {% block modal-id %} id="addData{% endblock modal-id %}" tabindex="-1"
+      aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="addModalLabel">
+                      {% block modal-title %} <i class="fas fa-plus"></i>&nbsp;&nbsp; Add Data
+                      {%endblock modal-title %}
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="POST" {% block action %} action="/add_data" {% endblock action %} autocomplete="off">
+                  {% csrf_token %}
+                  <div class="modal-body">
+                      <!-- Block Id (Root) -->
+                      {% block Value-id %} {% endblock Value-id %}
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-calendar-days"></i></span>
+                          <input type="date" class="form-control" name="date_time" maxlength="40" placeholder="Please enter date"
+                              required {% block Value-date_time %} {% endblock Value-date_time %}  >
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-hashtag"></i></span>
+                          <input type="text" class="form-control" name="trade_code" maxlength="40" placeholder="Enter Trade Code"
+                              required {% block Value-trade_code %} {% endblock Value-trade_code %}  >
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-file"></i></span>
+                          <input type="text" class="form-control" name="high" maxlength="40" placeholder="High"
+                              required {% block Value-high %} {% endblock Value-high %}  >
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-file"></i></span>
+                          <input type="text" class="form-control" name="low" maxlength="40" placeholder="Close"
+                              required {% block Value-low %} {% endblock Value-low %}  >
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-file"></i></span>
+                          <input type="text" class="form-control" name="open" maxlength="40" placeholder="Open"
+                              required {% block Value-open %} {% endblock Value-open %}  >
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-file"></i></span>
+                          <input type="text" class="form-control" name="close" maxlength="40" placeholder="close"
+                              required {% block Value-close %} {% endblock Value-close %}  >
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="btn border-secondary bg-light side-label"><i class="fa-solid fa-database"></i></span>
+                          <input type="text" class="form-control" name="volume" maxlength="40" placeholder="volume"
+                              required {% block Value-volume %} {% endblock Value-volume %}  >
+                      </div>
+                      <div class="mt-4" style="width: 100%;">
+                          <button type="submit" class="btn btn-secondary mb-3">
+                              {% block btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp; Add
+                              Employee{% endblock btn-action %}
+                          </button>
+                          <button type="reset" class="btn btn-outline-dark mb-3 ms-2" style="width: 50px;"
+                              title="Reset">
+                              <i class="fas fa-sync-alt"></i>
+                          </button>
+                          <a href="{% url 'home' %}" type="button" class="btn btn-outline-dark mb-3 ms-2"
+                              style="width: 50px;" title="Close">
+                              <i class="fas fa-times"></i>
+                          </a>
+                      </div>
+                  </div>
+              </form>
+
+          </div>
+      </div>
+  </div>
